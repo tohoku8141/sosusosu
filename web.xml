@@ -1,0 +1,8 @@
+<servlet>
+    <servlet-name>PrimeNumberQuizServlet</servlet-name>
+    <servlet-class>sosusosu.PrimeNumberQuizServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>PrimeNumberQuizServlet</servlet-name>
+    <url-pattern>/PrimeNumberQuizServlet</url-pattern>
+</servlet-mapping>
