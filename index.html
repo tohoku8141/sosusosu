@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>素数クイズ</title>
+</head>
+<body>
+    <h1>素数クイズ</h1>
+    <form action="PrimeNumberQuizServlet" method="post">
+        <p>次の数字が素数かどうかを判定してください:</p>
+        <p id="number"></p>
+        <input type="hidden" id="hiddenNumber" name="hiddenNumber">
+<label>
+            <input type="radio" name="isPrime" value="true"> 素数
+        </label>
+        <label>
+            <input type="radio" name="isPrime" value="false"> 素数でない
+        </label>
+        <input type="submit" value="送信">
+    </form>
+</body>
+</html>
