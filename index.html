@@ -6,28 +6,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Prime Number Checker</h1>
-  
-  <label for="numberInput">Enter a number:</label>
-  <input type="number" id="numberInput">
-  <button onclick="checkPrime()">Check Prime</button>
-  
-  <p id="result"></p>
+  <div class="container">
+    <h1>Prime Number Checker</h1>
+    <p>Enter an integer to check if it's a prime number:</p>
+    <input type="number" id="userInput" placeholder="Enter a number">
+    <button onclick="checkPrime()">Check</button>
+    <p id="result"></p>
+  </div>
 
-  <h2>Quiz: Is it a Prime Number?</h2>
-  <p id="quizQuestion"></p>
-  <input type="radio" id="prime" name="quiz" value="prime">
-  <label for="prime">Prime</label>
-  <input type="radio" id="notPrime" name="quiz" value="notPrime">
-  <label for="notPrime">Not Prime</label>
-  <button onclick="checkAnswer()">Submit</button>
-  <p id="quizResult"></p>
-
-  <h2>Statistics</h2>
-  <p>Total users checked: <span id="totalUsers">0</span></p>
-  <p>Number of primes: <span id="numPrimes">0</span></p>
-  <p>Number of non-primes: <span id="numNonPrimes">0</span></p>
-  
   <script src="script.js"></script>
 </body>
 </html>
