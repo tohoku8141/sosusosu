@@ -1,46 +1,69 @@
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Random;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-public class PrimeNumberQuizServlet extends HttpServlet {
-    private Random random = new Random();
-    private int currentNumber = random.nextInt(100); // 0から99の乱数
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
-        String isPrime = request.getParameter("isPrime");
-        boolean correct = isPrime.equals(String.valueOf(is
-Prime(currentNumber)));
-out.println("<html><body>");
-        out.println("<h1>素数クイズ結果</h1>");
-        out.println("<p>判定された数字: " + currentNumber + "</p>");
-        out.println("<p>あなたの回答: " + (correct ? "正解" : "不正解") + "</p>");
-currentNumber = random.nextInt(100);
-        out.println("<p>新しいクイズ:</p>");
-        out.println("<p id='number'>" + currentNumber + "</p>");
-        out.println("<input type='hidden' id='hiddenNumber' name='hiddenNumber' value='" + currentNumber + "'>");
-        out.println("<form action='PrimeNumberQuizServlet' method='post'>");
-        out.println("<label><input type='radio' name='isPrime' value='true'> 素数</label>");
-out.println("<label><input type='radio' name='isPrime' value='false'> 素数でない</label>");
-        out.println("<input type='submit' value='送信'>");
-        out.println("</form>");
-
-        out.println("</body></html>");
+// Function to check if a number is prime
+function isPrime(num) {
+  if (num <= 1) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
     }
-private boolean isPrime(int number) {
-        if (number < 2) {
-            return false;
-        }
-        for (int i = 2; i * i <= number; i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
+  }
+  return true;
+}
+
+// Function to display if the entered number is prime or not and nearby primes
+function checkPrime() {
+  const numberInput = document.getElementById("numberInput").value;
+  const resultElement = document.getElementById("result");
+  
+  if (numberInput === "") {
+    resultElement.textContent = "Please enter a number.";
+    return;
+  }
+
+  const number = parseInt(numberInput);
+  if (isPrime(number)) {
+    resultElement.textContent = `${number} is a prime number.`;
+  } else {
+    resultElement.textContent = `${number} is not a prime number. Nearby primes: ${findNearbyPrimes(number)}`;
+  }
+}
+
+// Function to find nearby primes for a non-prime number
+function findNearbyPrimes(num) {
+  let lower = num - 1;
+  let upper = num + 1;
+
+  while (true) {
+    if (isPrime(lower)) {
+      return lower;
+    } else if (isPrime(upper)) {
+      return upper;
     }
+    lower--;
+    upper++;
+  }
+}
+
+// Function to handle the quiz answer submission
+function checkAnswer() {
+  const quizQuestion = document.getElementById("quizQuestion");
+  const quizResult = document.getElementById("quizResult");
+  const totalUsers = document.getElementById("totalUsers");
+  const numPrimes = document.getElementById("numPrimes");
+  const numNonPrimes = document.getElementById("numNonPrimes");
+
+  // Here, you can implement quiz logic based on user input and update statistics
+
+  // Example:
+  // quizQuestion.textContent = "Is 7 a prime number?";
+  // if (document.getElementById("prime").checked) {
+  //   quizResult.textContent = "Correct!";
+  //   // Update statistics accordingly
+  //   numPrimes.textContent = parseInt(numPrimes.textContent) + 1;
+  // } else {
+  //   quizResult.textContent = "Incorrect!";
+  //   // Update statistics accordingly
+  //   numNonPrimes.textContent = parseInt(numNonPrimes.textContent) + 1;
+  // }
 }
