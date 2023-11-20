@@ -2,19 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>素数判定</title>
+  <title>素数判定ゲーム</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>素数判定</h1>
-    <p id="numberDisplay">ランダムな数を判定してください。</p>
-    <input type="number" id="userInput" placeholder="数を入力">
-    <button onclick="checkPrime()">判定する</button>
+    <h1>素数判定ゲーム</h1>
+    <p id="numberDisplay"></p>
+    <button onclick="checkAnswer(true)">素数</button>
+    <button onclick="checkAnswer(false)">素数ではない</button>
     <p id="result"></p>
   </div>
 
   <script>
+    function generateRandomNumber() {
+      const randomNumber = Math.floor(Math.random() * (100 - 2 + 1)) + 2; // 2以上100以下のランダムな整数
+      document.getElementById("numberDisplay").innerText = `判定する数: ${randomNumber}`;
+      return randomNumber;
+    }
+
     function isPrime(num) {
       if (num <= 1) return false;
       for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -23,20 +29,23 @@
       return true;
     }
 
-    function checkPrime() {
-      const userInput = document.getElementById("userInput").value;
-      const number = parseInt(userInput);
-      if (isNaN(number)) {
-        document.getElementById("result").innerText = "有効な数値を入力してください。";
+    function checkAnswer(answer) {
+      const displayedNumber = parseInt(document.getElementById("numberDisplay").innerText.split(":")[1]);
+      const isNumberPrime = isPrime(displayedNumber);
+
+      if ((isNumberPrime && answer) || (!isNumberPrime && !answer)) {
+        document.getElementById("result").innerText = "正解です！";
       } else {
-        const isNumPrime = isPrime(number);
-        if (isNumPrime) {
-          document.getElementById("result").innerText = `${number} は素数です！`;
-        } else {
-          document.getElementById("result").innerText = `${number} は素数ではありません。`;
-        }
+        document.getElementById("result").innerText = "不正解です。";
       }
+
+      generateRandomNumber(); // 新しい数を生成して表示
     }
+
+    // 最初のランダムな数を表示
+    window.onload = function() {
+      generateRandomNumber();
+    };
   </script>
 </body>
 </html>
