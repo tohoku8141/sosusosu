@@ -1,37 +1,19 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prime Number Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Prime Number Checker</h1>
+    <p>Enter an integer to check if it's a prime number:</p>
+    <input type="number" id="numberInput">
+    <button onclick="checkPrime()">Check</button>
+    <p id="result"></p>
+  </div>
 
-.container {
-  text-align: center;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-button {
-  padding: 8px 16px;
-  cursor: pointer;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-input[type="number"] {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
+  <script src="script.js"></script>
+</body>
+</html>
