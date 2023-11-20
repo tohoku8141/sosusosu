@@ -1,19 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Prime Number Checker</title>
+  <title>素数判定</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Prime Number Checker</h1>
-    <p>Enter an integer to check if it's a prime number:</p>
-    <input type="number" id="numberInput">
-    <button onclick="checkPrime()">Check</button>
+    <h1>素数判定</h1>
+    <p id="numberDisplay">ランダムな数を判定してください。</p>
+    <input type="number" id="userInput" placeholder="数を入力">
+    <button onclick="checkPrime()">判定する</button>
     <p id="result"></p>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function isPrime(num) {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    function checkPrime() {
+      const userInput = document.getElementById("userInput").value;
+      const number = parseInt(userInput);
+      if (isNaN(number)) {
+        document.getElementById("result").innerText = "有効な数値を入力してください。";
+      } else {
+        const isNumPrime = isPrime(number);
+        if (isNumPrime) {
+          document.getElementById("result").innerText = `${number} は素数です！`;
+        } else {
+          document.getElementById("result").innerText = `${number} は素数ではありません。`;
+        }
+      }
+    }
+  </script>
 </body>
 </html>
