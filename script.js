@@ -1,11 +1,13 @@
 function checkPrime() {
-  const number = document.getElementById('numberInput').value;
+  const numberInput = document.getElementById('numberInput').value;
+  const resultDisplay = document.getElementById('result');
 
-  if (number <= 1) {
-    document.getElementById('result').innerText = 'Please enter a number greater than 1.';
+  if (numberInput === '' || isNaN(numberInput) || numberInput <= 1) {
+    resultDisplay.textContent = 'Please enter a valid positive integer greater than 1.';
     return;
   }
 
+  const number = parseInt(numberInput);
   let isPrime = true;
 
   for (let i = 2; i <= Math.sqrt(number); i++) {
@@ -16,8 +18,8 @@ function checkPrime() {
   }
 
   if (isPrime) {
-    document.getElementById('result').innerText = number + ' is a prime number.';
+    resultDisplay.textContent = `${number} is a prime number!`;
   } else {
-    document.getElementById('result').innerText = number + ' is not a prime number.';
+    resultDisplay.textContent = `${number} is not a prime number.`;
   }
 }
