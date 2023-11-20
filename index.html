@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>素数クイズ</title>
+  <meta charset="UTF-8">
+  <title>Prime Number Checker</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>素数クイズ</h1>
-    <form action="PrimeNumberQuizServlet" method="post">
-        <p>次の数字が素数かどうかを判定してください:</p>
-        <p id="number"></p>
-        <input type="hidden" id="hiddenNumber" name="hiddenNumber">
-<label>
-            <input type="radio" name="isPrime" value="true"> 素数
-        </label>
-        <label>
-            <input type="radio" name="isPrime" value="false"> 素数でない
-        </label>
-        <input type="submit" value="送信">
-    </form>
+  <h1>Prime Number Checker</h1>
+  
+  <label for="numberInput">Enter a number:</label>
+  <input type="number" id="numberInput">
+  <button onclick="checkPrime()">Check Prime</button>
+  
+  <p id="result"></p>
+
+  <h2>Quiz: Is it a Prime Number?</h2>
+  <p id="quizQuestion"></p>
+  <input type="radio" id="prime" name="quiz" value="prime">
+  <label for="prime">Prime</label>
+  <input type="radio" id="notPrime" name="quiz" value="notPrime">
+  <label for="notPrime">Not Prime</label>
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="quizResult"></p>
+
+  <h2>Statistics</h2>
+  <p>Total users checked: <span id="totalUsers">0</span></p>
+  <p>Number of primes: <span id="numPrimes">0</span></p>
+  <p>Number of non-primes: <span id="numNonPrimes">0</span></p>
+  
+  <script src="script.js"></script>
 </body>
 </html>
